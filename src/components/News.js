@@ -6,6 +6,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 
 
+
 const News =(props)=> {
    const [articles, setArticles] = useState([])
     const [loading, setLoading] = useState(true)
@@ -20,7 +21,7 @@ const News =(props)=> {
    
 
    const updateNews= async()=>{
-      let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=6dc8d0b29d614cfea9fb835e2c99f32f&page=${page}&pageSize=8`;
+      let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=8`;
       setLoading(true)
       let data = await fetch(url);
       let parsedData = await data.json();
@@ -37,7 +38,7 @@ const News =(props)=> {
   
 
    const fetchMoreData = async () => {  
-      const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=6dc8d0b29d614cfea9fb835e2c99f32f&page=${page+1}&pageSize=${props.pageSize}`;
+      const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
       setPage(page+1) 
       let data = await fetch(url);
       let parsedData = await data.json()
